@@ -30,4 +30,12 @@ create table composants (
                             Type_composant varchar(255)
 );
     /*Adding constraint for projets and devis tables*/
-alter table devis add column projet_id integer references projets (id)
+alter table devis add column projet_id integer references projets (id);
+    /*Adding constraint for projets and clients tables*/
+alter table projets add column client_id integer references clients(id);
+    /*Adding constraint for projets and composants tables*/
+alter table composants add column projet_id integer references projets (id);
+
+
+
+
