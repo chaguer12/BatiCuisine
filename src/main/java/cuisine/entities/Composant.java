@@ -1,4 +1,4 @@
 package cuisine.entities;
 
-public class Composant {
+public abstract class Composant {
 }
