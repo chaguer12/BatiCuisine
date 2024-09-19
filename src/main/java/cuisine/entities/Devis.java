@@ -3,14 +3,12 @@ package cuisine.entities;
 import java.sql.Date;
 
 public class Devis {
-    private static int id_starter = 0;
     private int id;
     private double montant_estime;
     private Date date_emission;
     private Date date_expiration;
     private boolean accepte;
-    public Devis(int id,double montant_estime, Date date_emission, Date date_expiration, boolean accepte) {
-        this.id = id_starter++;
+    public Devis(double montant_estime, Date date_emission, Date date_expiration, boolean accepte) {
         this.montant_estime = montant_estime;
         this.date_emission = date_emission;
         this.date_expiration = date_expiration;

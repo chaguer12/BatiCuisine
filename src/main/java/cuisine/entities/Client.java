@@ -1,15 +1,14 @@
 package cuisine.entities;
 
 public class Client {
-    private static int id_starter = 0;
+
     private int id;
     private String nom_complet;
     private String adresse;
     private String tel;
     private boolean est_pro;
 
-    public Client(int id,String nom_complet, String adresse, String tel, boolean est_pro) {
-        this.id = id_starter++;
+    public Client(String nom_complet, String adresse, String tel, boolean est_pro) {
         this.nom_complet = nom_complet;
         this.adresse = adresse;
         this.tel = tel;

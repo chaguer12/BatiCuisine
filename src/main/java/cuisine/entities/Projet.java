@@ -18,6 +18,9 @@ public class Projet {
         this.etat_projet = etat_projet;
         this.client_id = client_id;
     }
+    public Projet(){
+
+    }
 
     public int getId() {
         return id;
@@ -53,5 +56,13 @@ public class Projet {
 
     public void setEtat_projet(Enum<EtatProjet> etat_projet) {
         this.etat_projet = etat_projet;
+    }
+
+    public int getClient_id() {
+        return client_id;
+    }
+
+    public void setClient_id(int client_id) {
+        this.client_id = client_id;
     }
 }
