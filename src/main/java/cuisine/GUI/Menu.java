@@ -1,12 +1,15 @@
 package cuisine.GUI;
 
+import cuisine.entities.Client;
 import cuisine.entities.Projet;
+import cuisine.services.ClientService;
 import cuisine.services.ProjetService;
 
 import java.util.Scanner;
 
 public class Menu {
     private static ProjetService projetService = new ProjetService();
+    private static ClientService clientService = new ClientService();
     private static Scanner scanner = new Scanner(System.in);
     public static void MainMenu() throws Exception {
         int choice = 0;
@@ -47,7 +50,7 @@ public class Menu {
 
         } while (choice != 4);
     }
-    public void MenuAjoutProjet() {
+    public static void MenuAjoutProjet() {
         System.out.println("====\tVOUS ETES ENTRAIN D'AJOUTER UN PROJET\t===");
         System.out.println("====>ENTRER LE NOM DU PROJET:");
         String nom = scanner.nextLine();
@@ -60,8 +63,9 @@ public class Menu {
 
 
     }
-    public void MenuAjoutClient(){
-        boolean est_pro;
+    public static void MenuAjoutClient(){
+        boolean est_pro = false;
+        String reponse;
         System.out.println("====\tVOUS ETES ENTRAIN D'AJOUTER UN CLIENT\t===");
         System.out.println("====>ENTRER LE NOM COMPLET DU CLIENT:");
         String nom = scanner.nextLine();
@@ -69,12 +73,24 @@ public class Menu {
         String adresse = scanner.nextLine();
         System.out.println("====>ENTRER LE TELEPHONE:");
         String telephone = scanner.nextLine();
-        System.out.println("====>EST CE QU'IL EST PRO? (O/N):");
-        if(scanner.nextLine().equals("O") || scanner.nextLine().equals("o")){
-            est_pro = true;
-        } else if (scanner.nextLine().equals("N") || scanner.nextLine().equals("n")) {
-            est_pro = false;
-        }
+        do{
+            System.out.println("====>EST CE QU'IL EST PRO? (O/N):");
+            reponse = scanner.nextLine();
+            if(reponse.equals("O") || reponse.equals("o")){
+                est_pro = true;
+                System.out.println("====\t il est pro");
+            } else if (reponse.equals("N") || reponse.equals("n")) {
+                est_pro = false;
+                System.out.println("====\t il n'est pas pro");
+
+            }
+        }while(!reponse.equals("O") && !reponse.equals("n") && !reponse.equals("o") && !reponse.equals("N"));
+        Client client = new Client();
+        client.setNom_complet(nom);
+        client.setAdresse(adresse);
+        client.setTel(telephone);
+        client.setEst_pro(est_pro);
+        clientService.addClient(client);
 
 
     }

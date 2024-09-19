@@ -14,6 +14,7 @@ public class Client {
         this.tel = tel;
         this.est_pro = est_pro;
     }
+    public Client() {}
 
     public int getId() {
         return id;
