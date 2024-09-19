@@ -38,7 +38,8 @@ public class Menu {
                     //Calcul();
                     break;
                 case 4:
-                    //
+                    MenuAjoutClient();
+                    break;
                 default:
                     System.out.println("Invalid choice.");
             }
@@ -46,7 +47,7 @@ public class Menu {
 
         } while (choice != 4);
     }
-    public static void MenuAjoutProjet() throws Exception {
+    public void MenuAjoutProjet() {
         System.out.println("====\tVOUS ETES ENTRAIN D'AJOUTER UN PROJET\t===");
         System.out.println("====>ENTRER LE NOM DU PROJET:");
         String nom = scanner.nextLine();
@@ -57,6 +58,12 @@ public class Menu {
         projet.setMarge_benefique(marge);
         projetService.addProjet(projet);
 
+
+    }
+    public void MenuAjoutClient(){
+        System.out.println("====\tVOUS ETES ENTRAIN D'AJOUTER UN CLIENT\t===");
+        System.out.println("====>ENTRER LE NOM DU CLIENT:");
+        String nom = scanner.nextLine();
 
     }
 }
