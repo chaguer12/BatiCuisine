@@ -1,4 +1,4 @@
-package cuisine.repository;
+package cuisine.repository.repositories;
 
 import cuisine.entities.Enums.EtatProjet;
 import cuisine.entities.Projet;
@@ -27,7 +27,7 @@ public class ProjetRepository implements ProjetInterface {
 
 
 
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println("insertion gone wrong => " + e.getMessage());
         }
 

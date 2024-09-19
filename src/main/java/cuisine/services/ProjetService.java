@@ -2,7 +2,7 @@ package cuisine.services;
 
 import cuisine.config.DatabaseConnection;
 import cuisine.entities.Projet;
-import cuisine.repository.ProjetRepository;
+import cuisine.repository.repositories.ProjetRepository;
 import cuisine.repository.interfaces.ProjetInterface;
 
 import java.sql.Connection;
@@ -18,7 +18,7 @@ public class ProjetService {
 
     public void getAllProjets() {
         List<Projet> projets = projetRepo.findAll();
-        projets.stream().forEach(projet -> System.out.println("nom: " + projet.getNom() + ", marge: " + projet.getMarge_benefique() + ", etat: "+ projet.getEtat_projet() + ", client: " ));
+        projets.stream().forEach(projet -> System.out.println("nom: " + projet.getNom() + ", marge: " + projet.getMarge_benefique() + ", etat: "+ projet.getEtat_projet() + ", client: "    ));
 
     }
 

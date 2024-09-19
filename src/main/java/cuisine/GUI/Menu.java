@@ -13,12 +13,12 @@ public class Menu {
         do {
             System.out.println("====\tBONJOUR!\t====");
             Thread.sleep(300);
-            System.out.println("====\tENTRER UN NUMERO ->:");
             System.out.println("[1]. Ajouter un projet.");
             System.out.println("[2]. Afficher les projets existants.");
             System.out.println("[3]. Calculer les couts d'un projet.");
             System.out.println("[4]. Ajouter un client.");
             System.out.println("[5]. Sortir.");
+            System.out.println("====\tENTRER UN NUMERO ->:");
 
 
             try{
@@ -61,9 +61,21 @@ public class Menu {
 
     }
     public void MenuAjoutClient(){
+        boolean est_pro;
         System.out.println("====\tVOUS ETES ENTRAIN D'AJOUTER UN CLIENT\t===");
-        System.out.println("====>ENTRER LE NOM DU CLIENT:");
+        System.out.println("====>ENTRER LE NOM COMPLET DU CLIENT:");
         String nom = scanner.nextLine();
+        System.out.println("====>ENTRER L'ADRESSE DU CLIENT:");
+        String adresse = scanner.nextLine();
+        System.out.println("====>ENTRER LE TELEPHONE:");
+        String telephone = scanner.nextLine();
+        System.out.println("====>EST CE QU'IL EST PRO? (O/N):");
+        if(scanner.nextLine().equals("O") || scanner.nextLine().equals("o")){
+            est_pro = true;
+        } else if (scanner.nextLine().equals("N") || scanner.nextLine().equals("n")) {
+            est_pro = false;
+        }
+
 
     }
 }
