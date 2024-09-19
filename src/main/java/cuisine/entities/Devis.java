@@ -20,7 +20,7 @@ public class Devis {
     public int getId() {
         return id;
     }
-    
+
 
     public double getMontant_estime() {
         return montant_estime;
