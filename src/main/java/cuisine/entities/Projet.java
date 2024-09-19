@@ -4,18 +4,19 @@ import cuisine.entities.Enums.EtatProjet;
 
 public class Projet {
     private int id;
-    private static int id_starter = 0;
     private String nom;
     private double marge_benefique;
     private double cout_total;
     private Enum<EtatProjet> etat_projet;
+    private int client_id;
 
-    public Projet(int id,String nom, double marge_benefique, double cout_total, EtatProjet etat_projet) {
-        this.id = id_starter++;
+    public Projet(String nom, double marge_benefique, double cout_total, EtatProjet etat_projet,int client_id) {
+
         this.nom = nom;
         this.marge_benefique = marge_benefique;
         this.cout_total = cout_total;
         this.etat_projet = etat_projet;
+        this.client_id = client_id;
     }
 
     public int getId() {

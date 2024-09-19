@@ -5,7 +5,8 @@ public abstract class Composant {
     private int id;
     private String nom;
     private String type;
+    private int project_id;
 
-    
+
 
 }
