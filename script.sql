@@ -46,6 +46,10 @@ create table materiaux (
                            cout_transport double precision,
                            coeff_qualite double precision
 );
+    /*final touches*/
+create type etat_projet as enum ('EN_COURS','ANNULE','TERMINE');
+alter table projets alter column etat type etat_projet using etat::etat_projet;
+
 
 
 
