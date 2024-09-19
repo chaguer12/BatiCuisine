@@ -20,7 +20,10 @@ public class Projet {
     }
     public Projet(){
 
+
     }
+
+
 
     public int getId() {
         return id;
@@ -40,6 +43,9 @@ public class Projet {
 
     public void setMarge_benefique(double marge_benefique) {
         this.marge_benefique = marge_benefique;
+    }
+    public void setId(int id) {
+        this.id = id;
     }
 
     public double getCout_total() {

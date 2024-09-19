@@ -4,8 +4,9 @@ import cuisine.entities.Enums.EtatProjet;
 import cuisine.entities.Projet;
 import cuisine.repository.interfaces.ProjetInterface;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProjetRepository implements ProjetInterface {
     private static Connection conn;
@@ -29,6 +30,41 @@ public class ProjetRepository implements ProjetInterface {
         } catch (Exception e) {
             System.out.println("insertion gone wrong => " + e.getMessage());
         }
+
+    }
+    @Override
+    public List<Projet> findAll(){
+        List<Projet> projets = new ArrayList<>();
+        String query = "select * from projets";
+        try {
+            PreparedStatement stmt = conn.prepareStatement(query);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                Projet projet = new Projet();
+                projet.setId(rs.getInt("id"));
+                projet.setNom(rs.getString("nom"));
+                projet.setMarge_benefique(rs.getDouble("marge_bénèfique"));
+                projet.setEtat_projet(EtatProjet.valueOf(rs.getString("etat")));
+                projets.add(projet);
+                }
+
+
+
+
+
+        }catch(SQLException e) {
+            System.out.println("Fetching gone wrong => " + e.getMessage());
+        }
+        return projets;
+    }
+
+    public Projet converter(ResultSet rs) throws SQLException {
+        Projet projet = new Projet();
+        projet.setId(rs.getInt("id"));
+        projet.setNom(rs.getString("nom"));
+        projet.setMarge_benefique(rs.getDouble("marge_bénèfique"));
+        projet.setEtat_projet(EtatProjet.valueOf(rs.getString("etat")));
+        return projet;
 
     }
 }

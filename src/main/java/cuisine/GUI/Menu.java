@@ -17,7 +17,9 @@ public class Menu {
             System.out.println("[1]. Ajouter un projet.");
             System.out.println("[2]. Afficher les projets existants.");
             System.out.println("[3]. Calculer les couts d'un projet.");
-            System.out.println("[4]. Sortir.");
+            System.out.println("[4]. Ajouter un client.");
+            System.out.println("[5]. Sortir.");
+
 
             try{
                 choice = scanner.nextInt();
@@ -30,11 +32,13 @@ public class Menu {
                     MenuAjoutProjet();
                     break;
                 case 2:
-                    //AfficherProjet();
+                    projetService.getAllProjets();
                     break;
                 case 3:
                     //Calcul();
                     break;
+                case 4:
+                    //
                 default:
                     System.out.println("Invalid choice.");
             }
