@@ -4,12 +4,13 @@ public abstract class Composant {
     private int id;
     private String nom;
     private String type;
-    private int project_id;
+    private Projet projet;
 
-    public Composant(String nom, String type, int project_id) {
+
+    public Composant(String nom, String type, Projet projet) {
         this.nom = nom;
         this.type = type;
-        this.project_id = project_id;
+        this.projet= projet;
     }
 
     public int getId() {
@@ -32,11 +33,11 @@ public abstract class Composant {
         this.type = type;
     }
 
-    public int getProject_id() {
-        return project_id;
+    public Projet getProject() {
+        return projet;
     }
 
-    public void setProject_id(int project_id) {
-        this.project_id = project_id;
+    public void setProject_id(Projet project) {
+        this.projet = projet;
     }
 }
