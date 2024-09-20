@@ -10,6 +10,9 @@ public class MainOuev extends Composant{
         this.heures_travail = heures_travail;
         this.coeff_prod = coeff_prod;
     }
+    public MainOuev(){
+        super();
+    }
 
     public double getTaux_horaire() {
         return taux_horaire;

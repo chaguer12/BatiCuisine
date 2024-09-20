@@ -12,6 +12,7 @@ public abstract class Composant {
         this.type = type;
         this.projet= projet;
     }
+    public Composant() {}
 
     public int getId() {
         return id;
@@ -37,7 +38,7 @@ public abstract class Composant {
         return projet;
     }
 
-    public void setProject_id(Projet project) {
+    public void setProjet(Projet project) {
         this.projet = projet;
     }
 }
