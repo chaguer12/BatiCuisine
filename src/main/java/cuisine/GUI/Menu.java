@@ -51,14 +51,21 @@ public class Menu {
         } while (choice != 4);
     }
     public static void MenuAjoutProjet() {
+        String reponse;
         System.out.println("====\tVOUS ETES ENTRAIN D'AJOUTER UN PROJET\t===");
         System.out.println("====>ENTRER LE NOM DU PROJET:");
         String nom = scanner.nextLine();
         System.out.println("====>ENTRER LA MARGE BENEFIQUE EN (%):");
         double marge = scanner.nextDouble();
+        System.out.println("====>ASSIGNER UN CLIENT AU PROJET");
+        clientService.getAllClients();
+        System.out.println("====>ENTRER UN CLIENT AU PROJET(entrez l'id du client):");
+        int id = scanner.nextInt();
+        Client client = clientService.getClientById(id);
         Projet projet = new Projet();
         projet.setNom(nom);
         projet.setMarge_benefique(marge);
+        projet.setClient(client);
         projetService.addProjet(projet);
 
 
@@ -74,7 +81,7 @@ public class Menu {
         System.out.println("====>ENTRER LE TELEPHONE:");
         String telephone = scanner.nextLine();
         do{
-            System.out.println("====>EST CE QU'IL EST PRO? (O/N):");
+
             reponse = scanner.nextLine();
             if(reponse.equals("O") || reponse.equals("o")){
                 est_pro = true;

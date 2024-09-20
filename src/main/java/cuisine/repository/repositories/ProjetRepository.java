@@ -16,12 +16,13 @@ public class ProjetRepository implements ProjetInterface {
     }
     @Override
     public void save(Projet projet){
-        String query= "insert into projets (nom,marge_bénèfique,etat) values (?,?,?::etat_projet)";
+        String query= "insert into projets (nom,marge_bénèfique,etat,client_id) values (?,?,?::etat_projet,?)";
         try{
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setString(1, projet.getNom());
             stmt.setDouble(2,projet.getMarge_benefique());
             stmt.setString(3,EtatProjet.EN_COURS.toString());
+            stmt.setInt(4,projet.getClient().getId());
             stmt.executeUpdate();
             System.out.println("projet insérer avec succés");
 

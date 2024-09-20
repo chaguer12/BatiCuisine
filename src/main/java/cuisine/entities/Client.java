@@ -19,6 +19,9 @@ public class Client {
     public int getId() {
         return id;
     }
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getNom_complet() {
         return nom_complet;
