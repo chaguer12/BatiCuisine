@@ -5,8 +5,8 @@ public class Materiel extends Composant{
     private double qty;
     private double cout_trnspr;
     private double coeff_qlt;
-    public Materiel(String nom, String type, int project_id) {
-        super(nom, "matériaux", project_id);
+    public Materiel(String nom, String type, Projet projet) {
+        super(nom, "matériaux", projet);
         this.cout_unt = cout_unt;
         this.qty = qty;
         this.coeff_qlt = coeff_qlt;

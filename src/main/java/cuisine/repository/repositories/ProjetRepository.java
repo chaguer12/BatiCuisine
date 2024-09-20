@@ -41,22 +41,30 @@ public class ProjetRepository implements ProjetInterface {
             PreparedStatement stmt = conn.prepareStatement(query);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
-                Projet projet = new Projet();
-                projet.setId(rs.getInt("id"));
-                projet.setNom(rs.getString("nom"));
-                projet.setMarge_benefique(rs.getDouble("marge_bénèfique"));
-                projet.setEtat_projet(EtatProjet.valueOf(rs.getString("etat")));
+                Projet projet = converter(rs);
                 projets.add(projet);
                 }
-
-
-
-
-
         }catch(SQLException e) {
             System.out.println("Fetching gone wrong => " + e.getMessage());
         }
         return projets;
+    }
+    @Override
+    public Projet findById(int id){
+        String query = "select * from projets where id=?";
+        Projet projet = null;
+        try{
+            PreparedStatement stmt = conn.prepareStatement(query);
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()){
+                projet = converter(rs);
+            }
+
+        }catch(SQLException e){
+            System.out.println("Fetching gone wrong => " + e.getMessage());
+        }
+        return projet;
     }
 
     public Projet converter(ResultSet rs) throws SQLException {
@@ -68,4 +76,5 @@ public class ProjetRepository implements ProjetInterface {
         return projet;
 
     }
+
 }

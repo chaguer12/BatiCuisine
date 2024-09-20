@@ -21,5 +21,9 @@ public class ProjetService {
         projets.stream().forEach(projet -> System.out.println("nom: " + projet.getNom() + ", marge: " + projet.getMarge_benefique() + ", etat: "+ projet.getEtat_projet()));
 
     }
+    public Projet getProjetById(int id) {
+        Projet projet = projetRepo.findById(id);
+        return projet;
+    }
 
 }

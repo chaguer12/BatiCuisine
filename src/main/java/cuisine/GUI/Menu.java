@@ -36,6 +36,7 @@ public class Menu {
                     break;
                 case 2:
                     projetService.getAllProjets();
+                    MainOuevMenu.addMainOuev();
                     break;
                 case 3:
                     //Calcul();
@@ -43,6 +44,8 @@ public class Menu {
                 case 4:
                     MenuAjoutClient();
                     break;
+                case 5:
+                    System.exit(0);
                 default:
                     System.out.println("Invalid choice.");
             }
