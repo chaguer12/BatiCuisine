@@ -14,11 +14,12 @@ public class ClientRepository implements ClientInterface {
     }
     @Override
     public void save(Client client) {
-        String query = "insert into clients (nom_complet,adresse,telephone) values (?,?,?)";
+        String query = "insert into clients (nom_complet,adresse,telephone,est_pro) values (?,?,?,?)";
         try (PreparedStatement ps = conn.prepareStatement(query)) {
             ps.setString(1, client.getNom_complet());
             ps.setString(2, client.getAdresse());
             ps.setString(3,client.getTel());
+            ps.setBoolean(4, client.isEst_pro());
             ps.executeUpdate();
 
         }catch(SQLException e) {

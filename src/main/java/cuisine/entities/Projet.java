@@ -8,7 +8,7 @@ public class Projet {
     private double marge_benefique;
     private double cout_total;
     private Enum<EtatProjet> etat_projet;
-    private int client_id;
+    private Client client;
 
     public Projet(String nom, double marge_benefique, double cout_total, EtatProjet etat_projet,int client_id) {
 
@@ -16,7 +16,7 @@ public class Projet {
         this.marge_benefique = marge_benefique;
         this.cout_total = cout_total;
         this.etat_projet = etat_projet;
-        this.client_id = client_id;
+        this.client= client;
     }
     public Projet(){
 
@@ -64,11 +64,11 @@ public class Projet {
         this.etat_projet = etat_projet;
     }
 
-    public int getClient_id() {
-        return client_id;
+    public Client getClient() {
+        return client;
     }
 
-    public void setClient_id(int client_id) {
-        this.client_id = client_id;
+    public void setClient(Client client) {
+        this.client = client;
     }
 }
