@@ -7,6 +7,7 @@ import cuisine.repository.interfaces.ProjetInterface;
 
 import java.sql.Connection;
 import java.util.List;
+import java.util.Optional;
 
 public class ProjetService {
     private final Connection conn = DatabaseConnection.getConnection();

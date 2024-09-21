@@ -35,7 +35,7 @@ public abstract class Composant {
     }
 
     public Projet getProject() {
-        return projet;
+        return this.projet;
     }
 
     public void setProjet(Projet project) {

@@ -1,6 +1,7 @@
 package cuisine.repository.repositories;
 
 import cuisine.entities.MainOuev;
+import cuisine.entities.Projet;
 import cuisine.repository.interfaces.MainOuevInterface;
 
 import java.sql.Connection;
@@ -15,13 +16,14 @@ public class MainOuevRepository implements MainOuevInterface {
         this.conn = conn;
     }
     @Override
-    public void save(MainOuev mainOuev) {
+    public void save(MainOuev mainOuev, Projet projet) {
+        System.out.println("qsdljflkds" + projet.getId());
         String query = "insert into main_ouevre (nom,type_composant,projet_id,taux_horaire,heures_travail,coeff_productivite) values (?,?,?,?,?,?)";
         try {
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setString(1, mainOuev.getNom());
             stmt.setString(2, mainOuev.getType());
-            stmt.setInt(3,mainOuev.getProject().getId());
+            stmt.setInt(3,projet.getId());
             stmt.setDouble(4,mainOuev.getTaux_horaire());
             stmt.setDouble(5,mainOuev.getHeures_travail());
             stmt.setDouble(6,mainOuev.getCoeff_prod());
@@ -29,8 +31,7 @@ public class MainOuevRepository implements MainOuevInterface {
 
 
         }catch(SQLException e) {
-            System.out.println("FETCHING GONE WRONG => "+ e.getMessage());
+            System.out.println("INSERTING GONE WRONG => "+ e.getMessage());
         }
-
     }
 }

@@ -54,7 +54,7 @@ public class Menu {
         } while (choice != 4);
     }
     public static void MenuAjoutProjet() {
-        String reponse;
+
         System.out.println("====\tVOUS ETES ENTRAIN D'AJOUTER UN PROJET\t===");
         System.out.println("====>ENTRER LE NOM DU PROJET:");
         String nom = scanner.nextLine();

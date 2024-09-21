@@ -5,14 +5,16 @@ public class MainOuev extends Composant{
     private double heures_travail;
     private double coeff_prod;
     public MainOuev(String nom, String type, Projet projet) {
-        super(nom, "mains d'ouevre",projet);
+        super(nom, "main d'ouevre",projet);
         this.taux_horaire = taux_horaire;
         this.heures_travail = heures_travail;
         this.coeff_prod = coeff_prod;
     }
     public MainOuev(){
-        super();
+        super(null,"main d'ouevre",null);
+
     }
+
 
     public double getTaux_horaire() {
         return taux_horaire;
@@ -37,4 +39,5 @@ public class MainOuev extends Composant{
     public void setCoeff_prod(double coeff_prod) {
         this.coeff_prod = coeff_prod;
     }
+
 }
