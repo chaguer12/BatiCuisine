@@ -36,7 +36,7 @@ public class Menu {
                     break;
                 case 2:
                     projetService.getAllProjets();
-                    MainOuevMenu.addMainOuev();
+                    ComposantMenu.addMainOuev();
                     break;
                 case 3:
                     //Calcul();
