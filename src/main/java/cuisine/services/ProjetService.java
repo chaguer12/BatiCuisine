@@ -1,5 +1,6 @@
 package cuisine.services;
 
+import cuisine.GUI.Menu;
 import cuisine.config.DatabaseConnection;
 import cuisine.entities.Projet;
 import cuisine.repository.repositories.ProjetRepository;
@@ -19,16 +20,17 @@ public class ProjetService {
         projetRepo.save(projet);
     }
 
-    public void getAllProjets() {
+    public Optional<List<Projet>> getAllProjets() {
         Optional<List<Projet>> Optionalprojets = Optional.of(projetRepo.findAll());
         Optionalprojets.ifPresentOrElse(
-                projets -> projets.forEach(p->System.out.printf("id: %d, nom: %s, marge: %d, etat: %s",
+                projets -> projets.forEach(p->System.out.printf("id: %d, nom: %s, marge: %.2f, etat: %s%n",
                         p.getId(),
                         p.getNom(),
                         p.getMarge_benefique(),
                         p.getEtat_projet())),
-                        () -> prosseed()
+                () ->System.out.println("ZERO PROJETS TROUVE")
                         );
+        return Optionalprojets;
 
 
     }

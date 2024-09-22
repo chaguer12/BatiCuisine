@@ -29,6 +29,8 @@ public class ComposantMenu {
             String nom = sc.nextLine();
             System.out.println("====>ENTRER LE TAUX HORAIRE:");
             double taux = sc.nextDouble();
+            System.out.println("====>ENTRER LE TAUX DE TVA:");
+            double tva = sc.nextDouble();
             System.out.println("====>ENTRER LES HEURES DE TRAVAIL:");
             double heures = sc.nextDouble();
             System.out.println("====>ENTRER LE COEFF DE PRODUCTIVITE:");
@@ -39,6 +41,7 @@ public class ComposantMenu {
             Composant mainOuev= new MainOuev();
             mainOuev.setNom(nom);
             mainOuev.setType(mainOuev.getType());
+            mainOuev.setTva(tva);
             ((MainOuev) mainOuev).setTaux_horaire(taux);
             ((MainOuev) mainOuev).setHeures_travail(heures);
             ((MainOuev) mainOuev).setCoeff_prod(coef);
@@ -61,14 +64,18 @@ public class ComposantMenu {
             double qty = sc.nextDouble();
             System.out.println("ENTRER LE COUT DE TRANSPORT:");
             double cout_trnspr = sc.nextDouble();
+            System.out.println("====>ENTRER LE TAUX DE TVA:");
+            double tva = sc.nextDouble();
             System.out.println("ENTRER LE COEFF QUALITE:");
             double coeff = sc.nextDouble();
+            sc.nextLine();
             System.out.println("====>Voulez-vous ajouter un autre? (y/n):");
             reponse = sc.nextLine();
             Composant materiel= new Materiel();
             materiel.setNom(nom);
             materiel.setType(materiel.getType());
             materiel.setProjet(projet);
+            materiel.setTva(tva);
             ((Materiel) materiel).setCout_unt(cout);
             ((Materiel) materiel).setQty(qty);
             ((Materiel)materiel).setCout_trnspr(cout_trnspr);

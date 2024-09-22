@@ -4,12 +4,14 @@ public abstract class Composant {
     private int id;
     private String nom;
     private String type;
+    private double tva;
     private Projet projet;
 
 
-    public Composant(String nom, String type, Projet projet) {
+    public Composant(String nom, String type, double tva, Projet projet) {
         this.nom = nom;
         this.type = type;
+        this.tva = tva;
         this.projet= projet;
     }
     public Composant() {}
@@ -40,5 +42,13 @@ public abstract class Composant {
 
     public void setProjet(Projet project) {
         this.projet = projet;
+    }
+
+    public double getTva() {
+        return tva;
+    }
+
+    public void setTva(double tva) {
+        this.tva = tva;
     }
 }

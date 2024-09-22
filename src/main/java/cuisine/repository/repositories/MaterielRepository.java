@@ -16,7 +16,7 @@ public class MaterielRepository implements MaterielInterface {
     }
    @Override
     public void saveMateriel(Materiel materiel , Projet projet) {
-        String query = "insert into materiaux(nom,type_composant,projet_id,cout_unt,quantite,cout_transport,coeff_qlt) values (?,?,?,?,?,?,?)";
+        String query = "insert into materiaux(nom,type_composant,projet_id,cout_unt,quantite,cout_transport,coeff_qlt,tva) values (?,?,?,?,?,?,?,?)";
         try{
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setString(1, materiel.getNom());
@@ -26,6 +26,7 @@ public class MaterielRepository implements MaterielInterface {
             ps.setDouble(5,materiel.getQty());
             ps.setDouble(6,materiel.getCout_trnspr());
             ps.setDouble(7,materiel.getCoeff_qlt());
+            ps.setDouble(8,materiel.getTva());
             ps.executeUpdate();
 
         }catch(SQLException e){

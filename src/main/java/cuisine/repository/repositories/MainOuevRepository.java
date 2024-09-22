@@ -18,7 +18,7 @@ public class MainOuevRepository implements MainOuevInterface {
     @Override
     public void save(MainOuev mainOuev, Projet projet) {
         System.out.println("le type est => " +mainOuev.getType());
-        String query = "insert into main_ouevre (nom,type_composant,projet_id,taux_horaire,heures_travail,coeff_productivite) values (?,?,?,?,?,?)";
+        String query = "insert into main_ouevre (nom,type_composant,projet_id,taux_horaire,heures_travail,coeff_productivite,tva) values (?,?,?,?,?,?,?)";
         try {
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setString(1, mainOuev.getNom());
@@ -27,6 +27,7 @@ public class MainOuevRepository implements MainOuevInterface {
             stmt.setDouble(4,mainOuev.getTaux_horaire());
             stmt.setDouble(5,mainOuev.getHeures_travail());
             stmt.setDouble(6,mainOuev.getCoeff_prod());
+            stmt.setDouble(7,mainOuev.getTva());
             stmt.executeUpdate();
             System.out.println("main ouevre insérer avec succés");
 

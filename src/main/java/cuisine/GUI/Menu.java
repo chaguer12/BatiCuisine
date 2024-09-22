@@ -16,6 +16,7 @@ public class Menu {
     private static Scanner scanner = new Scanner(System.in);
     public static void MainMenu() {
 
+
         int choice = 0;
         do {
             System.out.println("====\tBONJOUR!\t====");
@@ -39,8 +40,14 @@ public class Menu {
                     MenuAjoutProjet();
                     break;
                 case 2:
-                    projetService.getAllProjets();
-                    prosseed();
+                        Optional<List<Projet>>OptionalProjets = projetService.getAllProjets();
+                    if (OptionalProjets.stream().count() <= 1) {
+                        System.out.println("Aucun projet trouvé. Arrêt du programme.");
+                        return;
+                    }
+                    ComposantMenu.addMainOuev();
+
+
                     break;
                 case 3:
                     //Calcul();
@@ -115,7 +122,7 @@ public class Menu {
             System.out.println("====>VOUS POUVEZ PAS CONTINUER NOUS SOMMES DESOLE (^_^)");
             Menu.MainMenu();
         }catch (Exception e){
-            e.printStackTrace();
+            System.out.println("Erreur prosseed => " + e.getMessage());
         }
     }
 }

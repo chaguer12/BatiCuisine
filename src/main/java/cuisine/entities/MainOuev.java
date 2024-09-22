@@ -4,8 +4,8 @@ public class MainOuev extends Composant{
     private double taux_horaire;
     private double heures_travail;
     private double coeff_prod;
-    public MainOuev(String nom, String type, Projet projet,double taux_horaire, double heures_travail, double coeff_prod) {
-        super(nom, type,projet);
+    public MainOuev(String nom, String type,double tva, Projet projet,double taux_horaire, double heures_travail, double coeff_prod) {
+        super(nom, type,tva,projet);
         this.taux_horaire = taux_horaire;
         this.heures_travail = heures_travail;
         this.coeff_prod = coeff_prod;
