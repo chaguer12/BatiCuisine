@@ -10,13 +10,12 @@ public class Projet {
     private Enum<EtatProjet> etat_projet;
     private Client client;
 
-    public Projet(String nom, double marge_benefique, double cout_total, EtatProjet etat_projet,int client_id) {
-
+    public Projet(String nom, double marge_benefique, double cout_total, EtatProjet etat_projet,Client client) {
         this.nom = nom;
         this.marge_benefique = marge_benefique;
         this.cout_total = cout_total;
         this.etat_projet = etat_projet;
-        this.client= client;
+        this.client = client;
     }
     public Projet(){
 
@@ -28,6 +27,8 @@ public class Projet {
     public int getId() {
         return id;
     }
+    
+
 
     public String getNom() {
         return nom;

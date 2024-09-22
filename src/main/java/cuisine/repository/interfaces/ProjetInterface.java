@@ -7,5 +7,5 @@ import java.util.List;
 public interface ProjetInterface {
     void save(Projet projet);
     List<Projet> findAll();
-    //Projet find(int id);
+    Projet findById(int id);
 }
