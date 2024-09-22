@@ -8,11 +8,13 @@ public class Devis {
     private Date date_emission;
     private Date date_expiration;
     private boolean accepte;
-    public Devis(double montant_estime, Date date_emission, Date date_expiration, boolean accepte) {
+    private Projet projet;
+    public Devis(double montant_estime, Date date_emission, Date date_expiration, boolean accepte, Projet projet) {
         this.montant_estime = montant_estime;
         this.date_emission = date_emission;
         this.date_expiration = date_expiration;
         this.accepte = accepte;
+        this.projet = projet;
     }
 
     public int getId() {
@@ -50,5 +52,13 @@ public class Devis {
 
     public void setAccepte(boolean accepte) {
         this.accepte = accepte;
+    }
+
+    public Projet getProjet() {
+        return projet;
+    }
+
+    public void setProjet(Projet projet) {
+        this.projet = projet;
     }
 }
