@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.util.List;
 import java.util.Optional;
 
+import static cuisine.GUI.Menu.prosseed;
+
 public class ProjetService {
     private final Connection conn = DatabaseConnection.getConnection();
     private final ProjetInterface projetRepo = new ProjetRepository(conn);
@@ -18,8 +20,16 @@ public class ProjetService {
     }
 
     public void getAllProjets() {
-        List<Projet> projets = projetRepo.findAll();
-        projets.stream().forEach(projet -> System.out.println("id: "+ projet.getId()+", nom: " + projet.getNom() + ", marge: " + projet.getMarge_benefique() + ", etat: "+ projet.getEtat_projet()));
+        Optional<List<Projet>> Optionalprojets = Optional.of(projetRepo.findAll());
+        Optionalprojets.ifPresentOrElse(
+                projets -> projets.forEach(p->System.out.printf("id: %d, nom: %s, marge: %d, etat: %s",
+                        p.getId(),
+                        p.getNom(),
+                        p.getMarge_benefique(),
+                        p.getEtat_projet())),
+                        () -> prosseed()
+                        );
+
 
     }
     public Projet getProjetById(int id) {

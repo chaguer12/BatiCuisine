@@ -5,13 +5,17 @@ import cuisine.entities.Projet;
 import cuisine.services.ClientService;
 import cuisine.services.ProjetService;
 
+import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
 public class Menu {
+
     private static ProjetService projetService = new ProjetService();
     private static ClientService clientService = new ClientService();
     private static Scanner scanner = new Scanner(System.in);
     public static void MainMenu() throws Exception {
+
         int choice = 0;
         do {
             System.out.println("====\tBONJOUR!\t====");
@@ -36,7 +40,7 @@ public class Menu {
                     break;
                 case 2:
                     projetService.getAllProjets();
-                    ComposantMenu.addMainOuev();
+                    prosseed();
                     break;
                 case 3:
                     //Calcul();
@@ -103,5 +107,14 @@ public class Menu {
         clientService.addClient(client);
 
 
+    }
+    public static void prosseed() {
+        try{
+            System.out.println("====>AUCUN PROJET TROUVE!");
+            System.out.println("====>VOUS POUVEZ PAS CONTINUER NOUS SOMMES DESOLE (^_^)");
+            Menu.MainMenu();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }
