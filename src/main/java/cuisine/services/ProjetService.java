@@ -5,6 +5,7 @@ import cuisine.config.DatabaseConnection;
 import cuisine.entities.Projet;
 import cuisine.repository.repositories.ProjetRepository;
 import cuisine.repository.interfaces.ProjetInterface;
+import cuisine.services.interfaces.ProjetServiceInteface;
 
 import java.sql.Connection;
 import java.util.List;
@@ -12,7 +13,7 @@ import java.util.Optional;
 
 import static cuisine.GUI.Menu.prosseed;
 
-public class ProjetService {
+public class ProjetService implements ProjetServiceInteface {
     private final Connection conn = DatabaseConnection.getConnection();
     private final ProjetInterface projetRepo = new ProjetRepository(conn);
 
