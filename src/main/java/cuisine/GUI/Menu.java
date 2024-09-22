@@ -4,6 +4,8 @@ import cuisine.entities.Client;
 import cuisine.entities.Projet;
 import cuisine.services.ClientService;
 import cuisine.services.ProjetService;
+import cuisine.services.interfaces.ClientServiceInterface;
+import cuisine.services.interfaces.ProjetServiceInteface;
 
 import java.util.List;
 import java.util.Optional;
@@ -11,8 +13,8 @@ import java.util.Scanner;
 
 public class Menu {
 
-    private static ProjetService projetService = new ProjetService();
-    private static ClientService clientService = new ClientService();
+    private static ProjetServiceInteface projetService = new ProjetService();
+    private static ClientServiceInterface clientService = new ClientService();
     private static Scanner scanner = new Scanner(System.in);
     public static void MainMenu() {
 

@@ -3,6 +3,6 @@ package cuisine.services.interfaces;
 import cuisine.entities.Materiel;
 import cuisine.entities.Projet;
 
-public interface MaterialServiceInterface {
+public interface MaterielServiceInterface {
     void addMateriel(Materiel materiel , Projet projet);
 }

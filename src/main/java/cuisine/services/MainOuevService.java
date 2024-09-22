@@ -8,6 +8,8 @@ import cuisine.repository.repositories.MainOuevRepository;
 import cuisine.services.interfaces.MainOuevServiceInterface;
 
 import java.sql.Connection;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainOuevService implements MainOuevServiceInterface {
 
@@ -17,6 +19,13 @@ public class MainOuevService implements MainOuevServiceInterface {
     @Override
     public void addMainOuev(MainOuev mainOuev, Projet projet) {
         mainOuevInterface.save(mainOuev ,projet);
+
+    }
+    @Override
+    public List<MainOuev> getAllMainOuev(Projet projet) {
+        List<MainOuev> mains = mainOuevInterface.findAll(projet);
+        return mains;
+
 
     }
 }

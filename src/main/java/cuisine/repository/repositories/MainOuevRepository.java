@@ -1,13 +1,16 @@
 package cuisine.repository.repositories;
 
+import cuisine.entities.Composant;
 import cuisine.entities.MainOuev;
 import cuisine.entities.Projet;
 import cuisine.repository.interfaces.MainOuevInterface;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class MainOuevRepository implements MainOuevInterface {
@@ -36,4 +39,29 @@ public class MainOuevRepository implements MainOuevInterface {
             System.out.println("INSERTING GONE WRONG => "+ e.getMessage());
         }
     }
+    @Override
+    public List<MainOuev> findAll(Projet projet) {
+        List<MainOuev> mainOuevs = new ArrayList<>();
+        String query = "select * from main_ouevre where projet_id=?";
+        try{
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setInt(1,projet.getId());
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()) {
+                Composant Mainouev = new MainOuev();
+                Mainouev.setNom(rs.getString("nom"));
+                Mainouev.setType(rs.getString("type_composant"));
+                ((MainOuev)Mainouev).setTaux_horaire(rs.getInt("taux_horaire"));
+                ((MainOuev)Mainouev).setHeures_travail(rs.getDouble("heures_travail"));
+                ((MainOuev)Mainouev).setCoeff_prod(rs.getDouble("coeff_productivite"));
+                ((MainOuev)Mainouev).setTva(rs.getDouble("tva"));
+                mainOuevs.add((MainOuev) Mainouev);
+            }
+        } catch (SQLException e) {
+            System.out.println("FETCHING GONE WRONG => "+ e.getMessage());
+        }
+        return mainOuevs;
+    }
+
+
 }
