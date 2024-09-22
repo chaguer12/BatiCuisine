@@ -6,11 +6,14 @@ public class Materiel extends Composant{
     private double cout_trnspr;
     private double coeff_qlt;
     public Materiel(String nom, String type, Projet projet) {
-        super(nom, "matériaux", projet);
+        super(nom, type, projet);
         this.cout_unt = cout_unt;
         this.qty = qty;
         this.coeff_qlt = coeff_qlt;
         this.cout_trnspr = cout_trnspr;
+    }
+    public Materiel(){
+        setType("meteriel");
     }
 
     public double getCout_unt() {
