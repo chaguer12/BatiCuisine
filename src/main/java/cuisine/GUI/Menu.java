@@ -14,12 +14,12 @@ public class Menu {
     private static ProjetService projetService = new ProjetService();
     private static ClientService clientService = new ClientService();
     private static Scanner scanner = new Scanner(System.in);
-    public static void MainMenu() throws Exception {
+    public static void MainMenu() {
 
         int choice = 0;
         do {
             System.out.println("====\tBONJOUR!\t====");
-            Thread.sleep(300);
+
             System.out.println("[1]. Ajouter un projet.");
             System.out.println("[2]. Afficher les projets existants.");
             System.out.println("[3]. Calculer les couts d'un projet.");
@@ -88,7 +88,7 @@ public class Menu {
         System.out.println("====>ENTRER LE TELEPHONE:");
         String telephone = scanner.nextLine();
         do{
-
+            System.out.println("====>EST CE QU'IL EST PRO? (o/n):");
             reponse = scanner.nextLine();
             if(reponse.equals("O") || reponse.equals("o")){
                 est_pro = true;
@@ -105,6 +105,7 @@ public class Menu {
         client.setTel(telephone);
         client.setEst_pro(est_pro);
         clientService.addClient(client);
+        Menu.MainMenu();
 
 
     }
