@@ -29,20 +29,27 @@ public class MainOuevService implements MainOuevServiceInterface {
     }
     @Override
     public List<MainOuev> getAllMainOuev(Projet projet) {
+        System.out.println("====\tMAIN D'OUEVRE\t====");
         List<MainOuev> mains = mainOuevInterface.findAll(projet);
 
         mains.forEach(main -> {
 
             double total = calculateTotal(main);
-            String output = String.format("Nom: %s, Taux_horaire: %.2f, Heures de travail: %.2f, TVA: %.2f,Coeff: %.2f, Montant total: %.2f",main.getNom(),main.getTaux_horaire(),main.getHeures_travail(),main.getTva(),main.getCoeff_prod(),total);
+            double prix_ht = calculHorsTaxes(main);
+            String output = String.format("Nom: %s, Taux_horaire: %.2f, Heures de travail: %.2f, TVA: %.2f,Coeff: %.2f, Montant total: %.2f, Prix HT: %.2f",main.getNom(),main.getTaux_horaire(),main.getHeures_travail(),main.getTva(),main.getCoeff_prod(),total,prix_ht);
             System.out.println(output);
         });
         return mains;
 
 
     }
-    private double calculateTotal(@NotNull MainOuev main){
+    @Override
+    public double calculateTotal(@NotNull MainOuev main){
         return (main.getHeures_travail()*main.getTaux_horaire()*main.getCoeff_prod())*(1+(main.getTva()/100));
+    }
+    @Override
+    public double calculHorsTaxes(@NotNull MainOuev main) {
+        return (main.getHeures_travail()*main.getTaux_horaire()*main.getCoeff_prod());
     }
 
 }

@@ -19,24 +19,33 @@ public class MaterielService implements MaterielServiceInterface {
     }
     @Override
     public List<Materiel> getAllMateriel(Projet projet){
+        System.out.println("====\tMATERIAUX\t====");
         List<Materiel> materiaux = materielInterface.findAll(projet);
         materiaux.forEach(materiel -> {
             double total = calculateTotal(materiel);
-            String output = String.format("Nom: %s, Cout unitaire: %.2f, Quantite: %.2f,Cout transport: %.2f,Coeff qualite: %.2f, TVA: %.2f,Total: %.2f",
+            double prix_ht = calculHorsTaxes(materiel);
+            String output = String.format("Nom: %s, Cout unitaire: %.2f, Quantite: %.2f,Cout transport: %.2f,Coeff qualite: %.2f, TVA: %.2f,Total: %.2f, Prix HT: %.2f",
                     materiel.getNom(),
                     materiel.getCout_unt(),
                     materiel.getQty(),
                     materiel.getCout_trnspr(),
                     materiel.getCoeff_qlt(),
                     materiel.getTva(),
-                    total
+                    total,
+                    prix_ht
                     );
 
             System.out.println(output);
         });
         return materiaux;
     }
-    private double calculateTotal(Materiel materiel){
+    @Override
+    public double calculateTotal(Materiel materiel){
         return ((materiel.getCout_unt()*materiel.getQty()*materiel.getCoeff_qlt())*(1+(materiel.getTva())/100))+ materiel.getCout_trnspr();
+    }
+    @Override
+    public double calculHorsTaxes(Materiel materiel){
+        return ((materiel.getCout_unt()*materiel.getQty()*materiel.getCoeff_qlt())+ materiel.getCout_trnspr());
+
     }
 }
