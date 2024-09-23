@@ -21,8 +21,7 @@ public class Menu {
 
     private static ProjetServiceInteface projetService = new ProjetService();
     private static ClientServiceInterface clientService = new ClientService();
-    private static MainOuevServiceInterface mainOuevService = new MainOuevService();
-    private static MaterielServiceInterface materielService = new MaterielService();
+
     private static Scanner scanner = new Scanner(System.in);
     public static void MainMenu() {
 
@@ -55,21 +54,12 @@ public class Menu {
                         System.out.println("Aucun projet trouvé. Arrêt du programme.");
                         return;
                     }
-                    ComposantMenu.addMainOuev();
+                    ComposantMenu.addMainOuev( );
 
 
                     break;
                 case 3:
-                    Optional<List<Projet>>OptionalProjetsCalcs = projetService.getAllProjets();
-                    if (OptionalProjetsCalcs.stream().count() < 1) {
-                        System.out.println("Aucun projet trouvé. Arrêt du programme.");
-                        return;
-                    }
-                    System.out.println("===>VEUILLER SELECTIONER UN PROJET:");
-                    int id = scanner.nextInt();
-                    Projet projet = projetService.getProjetById(id);
-                    mainOuevService.getAllMainOuev(projet);
-                    materielService.getAllMateriel(projet);
+                    DevisMenu.generateDevis(scanner);
                     break;
                 case 4:
                     MenuAjoutClient();

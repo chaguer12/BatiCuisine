@@ -1,6 +1,7 @@
 package cuisine.services;
 
 import cuisine.config.DatabaseConnection;
+import cuisine.entities.Composant;
 import cuisine.entities.Devis;
 import cuisine.entities.Projet;
 import cuisine.repository.interfaces.DevisInterface;
@@ -21,4 +22,5 @@ public class DevisService implements DevisServiceInterface {
     public void acceptDevis(Devis devis) {
         devisService.acceptDevis(devis);
     }
+
 }

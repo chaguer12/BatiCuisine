@@ -16,6 +16,9 @@ public class Devis {
         this.accepte = accepte;
         this.projet = projet;
     }
+    public Devis(){
+
+    }
 
     public int getId() {
         return id;
