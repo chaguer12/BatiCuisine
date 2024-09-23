@@ -11,7 +11,7 @@ import java.sql.Connection;
 import java.util.List;
 import java.util.Optional;
 
-import static cuisine.GUI.Menu.prosseed;
+
 
 public class ProjetService implements ProjetServiceInteface {
     private final Connection conn = DatabaseConnection.getConnection();

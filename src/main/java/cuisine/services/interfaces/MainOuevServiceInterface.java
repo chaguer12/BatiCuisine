@@ -8,4 +8,5 @@ import java.util.List;
 public interface MainOuevServiceInterface {
     void addMainOuev(MainOuev mainOuev, Projet projet);
     List<MainOuev> getAllMainOuev(Projet projet);
+
 }
