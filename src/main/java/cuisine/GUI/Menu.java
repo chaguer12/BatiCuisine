@@ -3,16 +3,26 @@ package cuisine.GUI;
 import cuisine.entities.Client;
 import cuisine.entities.Projet;
 import cuisine.services.ClientService;
+import cuisine.services.MainOuevService;
+import cuisine.services.MaterielService;
 import cuisine.services.ProjetService;
+import cuisine.services.interfaces.ClientServiceInterface;
+import cuisine.services.interfaces.MainOuevServiceInterface;
+import cuisine.services.interfaces.MaterielServiceInterface;
+import cuisine.services.interfaces.ProjetServiceInteface;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
+
+
 public class Menu {
 
-    private static ProjetService projetService = new ProjetService();
-    private static ClientService clientService = new ClientService();
+    private static ProjetServiceInteface projetService = new ProjetService();
+    private static ClientServiceInterface clientService = new ClientService();
+    private static MainOuevServiceInterface mainOuevService = new MainOuevService();
+    private static MaterielServiceInterface materielService = new MaterielService();
     private static Scanner scanner = new Scanner(System.in);
     public static void MainMenu() {
 
@@ -40,8 +50,8 @@ public class Menu {
                     MenuAjoutProjet();
                     break;
                 case 2:
-                        Optional<List<Projet>>OptionalProjets = projetService.getAllProjets();
-                    if (OptionalProjets.stream().count() <= 1) {
+                    Optional<List<Projet>>OptionalProjets = projetService.getAllProjets();
+                    if (OptionalProjets.stream().count() < 1) {
                         System.out.println("Aucun projet trouvé. Arrêt du programme.");
                         return;
                     }
@@ -50,7 +60,16 @@ public class Menu {
 
                     break;
                 case 3:
-                    //Calcul();
+                    Optional<List<Projet>>OptionalProjetsCalcs = projetService.getAllProjets();
+                    if (OptionalProjetsCalcs.stream().count() < 1) {
+                        System.out.println("Aucun projet trouvé. Arrêt du programme.");
+                        return;
+                    }
+                    System.out.println("===>VEUILLER SELECTIONER UN PROJET:");
+                    int id = scanner.nextInt();
+                    Projet projet = projetService.getProjetById(id);
+                    mainOuevService.getAllMainOuev(projet);
+                    materielService.getAllMateriel(projet);
                     break;
                 case 4:
                     MenuAjoutClient();
@@ -116,13 +135,5 @@ public class Menu {
 
 
     }
-    public static void prosseed() {
-        try{
-            System.out.println("====>AUCUN PROJET TROUVE!");
-            System.out.println("====>VOUS POUVEZ PAS CONTINUER NOUS SOMMES DESOLE (^_^)");
-            Menu.MainMenu();
-        }catch (Exception e){
-            System.out.println("Erreur prosseed => " + e.getMessage());
-        }
-    }
+
 }

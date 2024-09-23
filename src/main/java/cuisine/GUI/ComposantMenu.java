@@ -7,14 +7,17 @@ import cuisine.entities.Projet;
 import cuisine.services.MainOuevService;
 import cuisine.services.MaterielService;
 import cuisine.services.ProjetService;
+import cuisine.services.interfaces.MainOuevServiceInterface;
+import cuisine.services.interfaces.MaterielServiceInterface;
+import cuisine.services.interfaces.ProjetServiceInteface;
 
 import java.util.Scanner;
 
 public class ComposantMenu {
     private static Scanner sc = new Scanner(System.in);
-    private static ProjetService projetService = new ProjetService();
-    private static MainOuevService mainOuevService = new MainOuevService();
-    private static MaterielService materielService = new MaterielService();
+    private static ProjetServiceInteface projetService = new ProjetService();
+    private static MainOuevServiceInterface mainOuevService = new MainOuevService();
+    private static MaterielServiceInterface materielService = new MaterielService();
     public static void addMainOuev(){
         int id = 0;
         String reponse = "";

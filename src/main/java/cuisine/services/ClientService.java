@@ -4,11 +4,12 @@ import cuisine.config.DatabaseConnection;
 import cuisine.entities.Client;
 import cuisine.repository.interfaces.ClientInterface;
 import cuisine.repository.repositories.ClientRepository;
+import cuisine.services.interfaces.ClientServiceInterface;
 
 import java.sql.Connection;
 import java.util.List;
 
-public class ClientService {
+public class ClientService implements ClientServiceInterface {
     private final Connection conn = DatabaseConnection.getConnection();
     private ClientInterface clientRepo = new ClientRepository(conn);
     public void addClient(Client client){
