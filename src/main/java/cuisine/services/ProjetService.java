@@ -39,5 +39,8 @@ public class ProjetService implements ProjetServiceInteface {
         Projet projet = projetRepo.findById(id);
         return projet;
     }
+    public void saveCoutTotal(Projet projet){
+        projetRepo.saveCoutTotal(projet);
+    }
 
 }

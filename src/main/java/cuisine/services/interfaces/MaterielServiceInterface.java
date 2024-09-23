@@ -7,7 +7,9 @@ import java.util.List;
 
 public interface MaterielServiceInterface {
     void addMateriel(Materiel materiel , Projet projet);
-    List<Materiel> getAllMateriel(Projet projet);
+    double getAllMateriel(Projet projet);
     double calculateTotal(Materiel materiel);
     double calculHorsTaxes(Materiel materiel);
+    double totalHT(List<Double> totals);
+    double totalTTC(List<Double> totals);
 }

@@ -8,4 +8,5 @@ public interface ProjetInterface {
     void save(Projet projet);
     List<Projet> findAll();
     Projet findById(int id);
+    void saveCoutTotal(Projet projet);
 }

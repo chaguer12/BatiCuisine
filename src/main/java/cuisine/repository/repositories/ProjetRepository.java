@@ -33,6 +33,18 @@ public class ProjetRepository implements ProjetInterface {
         }
 
     }
+    public void saveCoutTotal(Projet projet){
+        String query = "update projets set cout_total = ? where id = ?";
+        try{
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setDouble(1,projet.getCout_total());
+            ps.setInt(2,projet.getId());
+            ps.executeUpdate();
+
+        }catch(SQLException e){
+            System.out.println("INSERTING GONE WRONG=> " + e.getMessage());
+        }
+    }
     @Override
     public List<Projet> findAll(){
         List<Projet> projets = new ArrayList<>();

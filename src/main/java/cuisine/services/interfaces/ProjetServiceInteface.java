@@ -9,4 +9,5 @@ public interface ProjetServiceInteface {
     void addProjet(Projet projet);
     Projet getProjetById(int id);
     Optional<List<Projet>> getAllProjets();
+    void saveCoutTotal(Projet projet);
 }

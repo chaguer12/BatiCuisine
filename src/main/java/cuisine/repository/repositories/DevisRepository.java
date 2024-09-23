@@ -14,7 +14,7 @@ public class DevisRepository implements DevisInterface {
         this.conn = conn;
 
     }
-    public void save(Devis devis, Projet projet){
+    public  void save(Devis devis, Projet projet){
         String query = "insert into devis (montantestime,date_emission,date_expiration,projet_id,accept) values (?,?,?,?,?)";
         try {
             PreparedStatement ps = conn.prepareStatement(query);
@@ -23,6 +23,7 @@ public class DevisRepository implements DevisInterface {
             ps.setDate(3,devis.getDate_expiration());
             ps.setInt(4,projet.getId());
             ps.setBoolean(5,devis.isAccepte());
+            ps.executeUpdate();
 
 
         } catch (SQLException e) {

@@ -27,7 +27,7 @@ public class MainOuevService implements MainOuevServiceInterface {
 
     }
     @Override
-    public List<MainOuev> getAllMainOuev(Projet projet) {
+    public double getAllMainOuev(Projet projet) {
         List<Double> totals = new ArrayList<>();
         List<Double> HT = new ArrayList<>();
         System.out.println("====\tMAIN D'OUEVRE\t====");
@@ -43,9 +43,9 @@ public class MainOuevService implements MainOuevServiceInterface {
         });
         double total_ttc = totalTTC(totals);
         double total_ht = totalHT(HT);
-        System.out.println("====>MONSTANT HORS TAXES: "+total_ht);
-        System.out.println("====>MONSTANT TTC: "+total_ttc);
-        return mains;
+        System.out.println("====>MONTANT HORS TAXES: "+total_ht);
+        System.out.println("====>MONTANT TTC: "+total_ttc);
+        return total_ttc;
     }
     @Override
     public double calculateTotal(@NotNull MainOuev main){
@@ -56,12 +56,12 @@ public class MainOuevService implements MainOuevServiceInterface {
         return (main.getHeures_travail()*main.getTaux_horaire()*main.getCoeff_prod());
     }
     @Override
-    public double totalHT(List<Double> totals) {
+    public double totalHT(@NotNull List<Double> totals) {
         return totals.stream().mapToDouble(Double::doubleValue).sum();
 
     }
     @Override
-    public double totalTTC(List<Double> ttc){
+    public double totalTTC(@NotNull List<Double> ttc){
         return ttc.stream().mapToDouble(Double::doubleValue).sum();
 
     }
