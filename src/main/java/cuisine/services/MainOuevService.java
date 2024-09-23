@@ -10,6 +10,7 @@ import cuisine.repository.repositories.MainOuevRepository;
 import cuisine.repository.repositories.ProjetRepository;
 import cuisine.services.interfaces.MainOuevServiceInterface;
 import cuisine.services.interfaces.ProjetServiceInteface;
+import org.jetbrains.annotations.NotNull;
 
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -40,7 +41,7 @@ public class MainOuevService implements MainOuevServiceInterface {
 
 
     }
-    private double calculateTotal(MainOuev main){
+    private double calculateTotal(@NotNull MainOuev main){
         return (main.getHeures_travail()*main.getTaux_horaire()*main.getCoeff_prod())*(1+(main.getTva()/100));
     }
 

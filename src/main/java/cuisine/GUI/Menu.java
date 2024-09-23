@@ -4,9 +4,11 @@ import cuisine.entities.Client;
 import cuisine.entities.Projet;
 import cuisine.services.ClientService;
 import cuisine.services.MainOuevService;
+import cuisine.services.MaterielService;
 import cuisine.services.ProjetService;
 import cuisine.services.interfaces.ClientServiceInterface;
 import cuisine.services.interfaces.MainOuevServiceInterface;
+import cuisine.services.interfaces.MaterielServiceInterface;
 import cuisine.services.interfaces.ProjetServiceInteface;
 
 import java.util.List;
@@ -20,6 +22,7 @@ public class Menu {
     private static ProjetServiceInteface projetService = new ProjetService();
     private static ClientServiceInterface clientService = new ClientService();
     private static MainOuevServiceInterface mainOuevService = new MainOuevService();
+    private static MaterielServiceInterface materielService = new MaterielService();
     private static Scanner scanner = new Scanner(System.in);
     public static void MainMenu() {
 
@@ -66,6 +69,7 @@ public class Menu {
                     int id = scanner.nextInt();
                     Projet projet = projetService.getProjetById(id);
                     mainOuevService.getAllMainOuev(projet);
+                    materielService.getAllMateriel(projet);
                     break;
                 case 4:
                     MenuAjoutClient();
