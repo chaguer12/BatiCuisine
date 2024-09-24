@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import static java.lang.Class.forName;
 
 public class DatabaseConnection {
     private static final String url = "jdbc:postgresql://localhost:5432/baticuisine";
@@ -12,7 +11,7 @@ public class DatabaseConnection {
     private static final String password = "1360";
     private static Connection conn = null;
 
-    public static Connection Connect() {
+    private static Connection Connect() {
         try{
             Class.forName("org.postgresql.Driver");
             conn = DriverManager.getConnection(url,db_user,password);
