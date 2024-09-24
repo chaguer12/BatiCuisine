@@ -41,10 +41,6 @@ public class DevisMenu {
             System.out.println("====>UNE MARGE BENEFIQUE DE "+projet.getMarge_benefique()+ "% SERA APPLIQUE");
         }
         scanner.nextLine();
-        LocalDate date = LocalDate.now();
-        System.out.println("====>DATE D'EMISSION EST: " + date);
-        Double mains = mainOuevService.getAllMainOuev(projet);
-        Double materiaux = materielService.getAllMateriel(projet);
         System.out.println("====>AJOUTER UNE DATE D'EXPIRATION:(JJ-MM-AAAA)");
         String dateExp = scanner.nextLine();
         LocalDate expirationDate = LocalDate.parse(dateExp, formatter);
@@ -55,6 +51,10 @@ public class DevisMenu {
         if (reponse_remise.equals("n") || reponse_remise.equals("N")) {
             remise = 0;
         }
+        LocalDate date = LocalDate.now();
+        System.out.println("====>DATE D'EMISSION EST: " + date);
+        Double mains = mainOuevService.getAllMainOuev(projet);
+        Double materiaux = materielService.getAllMateriel(projet);
         System.out.println("====>EST CE QUE VOUS CONFIRMER CE DEVIS? (o/n)");
         String confirmer = scanner.nextLine();
         projet.setCout_total((mains + materiaux) * (1-remise/100));
