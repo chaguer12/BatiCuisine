@@ -1,6 +1,6 @@
 package cuisine.entities;
 
-public class MainOuev extends Composant{
+public  class MainOuev extends Composant{
     private double taux_horaire;
     private double heures_travail;
     private double coeff_prod;

@@ -72,7 +72,7 @@ public class ComposantMenu {
             System.out.println("ENTRER LE COEFF QUALITE:");
             double coeff = sc.nextDouble();
             sc.nextLine();
-            System.out.println("====>Voulez-vous ajouter un autre? (y/n):");
+            System.out.println("====>Voulez-vous ajouter un autre? (o/n):");
             reponse = sc.nextLine();
             Composant materiel= new Materiel();
             materiel.setNom(nom);
@@ -84,7 +84,7 @@ public class ComposantMenu {
             ((Materiel)materiel).setCout_trnspr(cout_trnspr);
             ((Materiel)materiel).setCoeff_qlt(coeff);
             materielService.addMateriel((Materiel) materiel,projet);
-        }while(reponse.equals("y")||reponse.equals("Y"));
+        }while(reponse.equals("o")||reponse.equals("O"));
 
 
 

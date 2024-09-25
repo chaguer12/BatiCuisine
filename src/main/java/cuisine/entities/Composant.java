@@ -1,6 +1,6 @@
 package cuisine.entities;
 
-public abstract class Composant {
+public abstract class  Composant {
     private int id;
     private String nom;
     private String type;
