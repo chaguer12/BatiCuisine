@@ -10,6 +10,9 @@ public class DatabaseConnection {
     private static final String db_user = "postgres";
     private static final String password = "1360";
     private static Connection conn = null;
+    private DatabaseConnection() {
+        //to prevent instantiation
+    }
 
     private static Connection Connect() {
         try{

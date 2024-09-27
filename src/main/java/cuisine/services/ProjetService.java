@@ -2,12 +2,14 @@ package cuisine.services;
 
 import cuisine.GUI.Menu;
 import cuisine.config.DatabaseConnection;
+import cuisine.entities.Client;
 import cuisine.entities.Projet;
 import cuisine.repository.repositories.ProjetRepository;
 import cuisine.repository.interfaces.ProjetInterface;
 import cuisine.services.interfaces.ProjetServiceInteface;
 
 import java.sql.Connection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -42,5 +44,6 @@ public class ProjetService implements ProjetServiceInteface {
     public void saveCoutTotal(Projet projet){
         projetRepo.saveCoutTotal(projet);
     }
+
 
 }

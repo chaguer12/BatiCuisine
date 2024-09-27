@@ -7,7 +7,7 @@ public class Projet {
     private String nom;
     private double marge_benefique;
     private double cout_total;
-    private Enum<EtatProjet> etat_projet;
+    private EtatProjet etat_projet;
     private Client client;
 
     public Projet(String nom, double marge_benefique, double cout_total, EtatProjet etat_projet,Client client) {
@@ -61,7 +61,7 @@ public class Projet {
         return etat_projet;
     }
 
-    public void setEtat_projet(Enum<EtatProjet> etat_projet) {
+    public void setEtat_projet(EtatProjet etat_projet) {
         this.etat_projet = etat_projet;
     }
 

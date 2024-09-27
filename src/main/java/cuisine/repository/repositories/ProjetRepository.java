@@ -15,16 +15,17 @@ public class ProjetRepository implements ProjetInterface {
         this.conn = conn;
     }
     @Override
-    public void save(Projet projet){
-        String query= "insert into projets (nom,marge_bénèfique,etat,client_id) values (?,?,?::etat_projet,?)";
-        try{
+    public void save(Projet projet) {
+        String query = "insert into projets (nom,marge_bénèfique,etat,client_id) values (?,?,?::etat_projet,?)";
+        int rs = 0;
+        try {
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setString(1, projet.getNom());
-            stmt.setDouble(2,projet.getMarge_benefique());
-            stmt.setString(3,EtatProjet.EN_COURS.toString());
-            stmt.setInt(4,projet.getClient().getId());
+            stmt.setDouble(2, projet.getMarge_benefique());
+            stmt.setString(3, EtatProjet.EN_COURS.toString());
+            stmt.setInt(4, projet.getClient().getId());
             stmt.executeUpdate();
-            System.out.println("projet insérer avec succés");
+            rs = 1;
 
 
 
@@ -32,6 +33,8 @@ public class ProjetRepository implements ProjetInterface {
             System.out.println("insertion gone wrong => " + e.getMessage());
         }
 
+
+        return;
     }
     public void saveCoutTotal(Projet projet){
         String query = "update projets set cout_total = ? where id = ?";

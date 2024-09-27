@@ -9,6 +9,8 @@ import cuisine.repository.repositories.DevisRepository;
 import cuisine.services.interfaces.DevisServiceInterface;
 
 import java.sql.Connection;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DevisService implements DevisServiceInterface {
     private final Connection conn = DatabaseConnection.getConnection();
@@ -22,5 +24,7 @@ public class DevisService implements DevisServiceInterface {
     public void acceptDevis(Devis devis) {
         devisService.acceptDevis(devis);
     }
+
+
 
 }
